@@ -1,0 +1,63 @@
+/* ESTILOS DEL CUERPO */
+
+/* Centra el tablero en el medio de la pantalla y le da un fondo gris oscuro */
+body {
+    display: flex;              /* Alinea el contenido */
+    justify-content: center;    /* Centra el tablero horizontalmente (izquierda-derecha) */
+    align-items: center;        /* Centra el tablero verticalmente (arriba-abajo) */
+    height: 100vh;              /* Hace que el body ocupe el 100% de la altura de la ventana */
+    background-color: #bde0fe;  /* Define el color de fondo azul pastel de la web */
+    margin: 0;                  /* Elimina los márgenes por defecto */
+}
+
+/* ESTRUCTURA DEL TABLERO */
+
+/* Configuración de el contenedor principal usando CSS Grid */
+#tablero {
+    display: grid; /* Convierte el div en una rejilla o cuadrícula */
+
+    /* Crea 8 columnas iguales. Cada una medirá 60 píxeles de ancho */
+    grid-template-columns: repeat(8, 60px);
+
+    /* Crea 8 filas iguales. Cada una medirá 60 píxeles de alto */
+    grid-template-rows: repeat(8, 60px);
+
+    /* Le pone un borde alrededor de todo el tablero */
+    border: 5px solid #ffafcc;  /* Grosor de 5px, estilo sólido y color rosa oscuro */
+
+    box-shadow: 0px 10px 40px 5px #a2d2ff; /* Sombra azul pastel más grande y pronunciada */
+}
+
+/* --- ESTILO DE LAS CELDAS INDIVIDUALES --- */
+
+/* Estilo base para CADA casilla que generemos con JavaScript */
+.casilla {
+    display: flex;              /* Usamos flex para posicionar la pieza dentro de la celda */
+
+    /* Centramos las piezas (emojis) horizontalmente */
+    justify-content: center;    /* La pieza queda al centro de su columna */
+
+    /* Centramos las piezas (emojis) verticalmente */
+    align-items: center;        /* La pieza queda al centro de su fila */
+
+    /* Hacemos que los emojis sean grandes y legibles */
+    font-size: 40px;            /* Tamaño de fuente para que el emoji se vea bien */
+
+    /* Evitamos que el texto/emoji se pueda seleccionar con el ratón, por estética */
+    user-select: none;          /* Impide el sombreado azul al hacer clics rápidos */
+
+    /* Color de las piezas (emojis) */
+    color: #e378a8;
+}
+
+/* --- COLORES DE LAS CASILLAS --- */
+
+/* Clase para las casillas claras (color madera claro) */
+.blanca {
+    background-color: #fff6f9;  /* Color blanco rosado */
+}
+
+/* Clase para las casillas oscuras (color madera oscuro) */
+.negra {
+    background-color: #ffc8dd;  /* Color rosa pastel */
+}

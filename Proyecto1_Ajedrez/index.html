@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Importante para que se vean bien las piezas -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero Ajedrez Automático - Marta González González</title>
+
+    <!-- Enlace al archivo de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Creamos este único div (tablero) por que es mejor que escribir todas las celdas a mano.
+    Ya que con un bucle de JavaScript las podemos generar fácilmente, y además calcula la posición
+    y el color de cada casilla (con matemáticas). Además mejora el rendimiento, el div tablero será
+    como el "lienzo"-->
+    <div id="tablero"></div>
+
+    <!-- Enlace al archivo de JavaScript.
+    Se pone al final del body para que cargue después del HTML -->
+    <script src="script.js"></script>
+</body>
+
+</html>
