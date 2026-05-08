@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título para la pestaña del navegador -->
+    <title>Mini-Juego de Animación - Marta González González</title>
+    <!-- Importamos la fuente Bebas Neue de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Enlace al archivo css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- TÍTULO DE LA PÁGINA -->
+    <h1 id="titulo-juego">Mini-Juego del desempleado</h1>
+
+    <!-- CONTENEDOR JUEGO -->
+    <!-- Es como si fuera este div la pantalla de la consola. Todo nuestro juego
+    va a existir dentro de este contenedor -->
+    <div id="contenedor-juego">
+
+        <!-- PUNTACIÓN -->
+        <!-- Esto es un simple texto, luego usaremos JavaScript para buscar el
+        id "marcador" y cambiar el 0 por los puntos que vaya ganando el jugador
+        -->
+        <div id="marcador">PUNTOS: 0</div>
+
+        <!-- PERSONAJE -->
+        <!-- Este div representa el jugador -->
+        <div id="personaje">🤓</div>
+
+        <!-- OBSTÁCULO -->
+        <!-- Este div representa el obstáculo de juego -->
+        <div id="obstaculo"></div>
+
+        <!-- INTERFAZ DEL FINAL DEL JUEGO -->
+        <div id="pantalla-fin">
+            <h1>¡LA OFERTA DE EMPLEO TE HA ATRAPADO!</h1>
+            <p>Presiona <u>Espacio</u> para volver a ser un nini</p>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>

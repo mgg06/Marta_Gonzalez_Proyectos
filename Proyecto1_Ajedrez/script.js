@@ -106,3 +106,4 @@ for(let fila = 0; fila < 8; fila++){
     }   // Fin del bucle interno (columna suma +1)
 
 }   // Fin del bucle externo (fila suma +1)
+

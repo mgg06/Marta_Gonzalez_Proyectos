@@ -3,11 +3,22 @@
 /* Centra el tablero en el medio de la pantalla y le da un fondo gris oscuro */
 body {
     display: flex;              /* Alinea el contenido */
+    flex-direction: column;     /* Ponemos los elementos en columna para que el título quede arriba del tablero */
     justify-content: center;    /* Centra el tablero horizontalmente (izquierda-derecha) */
     align-items: center;        /* Centra el tablero verticalmente (arriba-abajo) */
     height: 100vh;              /* Hace que el body ocupe el 100% de la altura de la ventana */
     background-color: #bde0fe;  /* Define el color de fondo azul pastel de la web */
     margin: 0;                  /* Elimina los márgenes por defecto */
+}
+
+/* ESTILOS DEL TÍTULO */
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif; /* Usamos la fuente que acabamos de importar en el HTML */
+    color: #e378a8;                        /* Le ponemos el mismo rosa oscuro de las piezas para que pegue */
+    font-size: 55px;                       /* Hacemos que el texto sea bastante grande */
+    margin-bottom: 25px;                   /* Dejamos espacio abajo para que el título no toque el tablero */
+    letter-spacing: 2px;                   /* Separamos las letras un poquito para que quede más elegante */
 }
 
 /* ESTRUCTURA DEL TABLERO */

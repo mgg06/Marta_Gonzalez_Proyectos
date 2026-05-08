@@ -1,0 +1,212 @@
+/* ESTILOS GENERALES */
+
+body {
+    /* Fondo con degradado radial */
+    background: radial-gradient(circle, #FDE3B8 0%, #FCCC84 100%);
+    /* Elimina márgenes por defecto del navegador */
+    margin: 0;
+    /* Ocupa al menos toda la altura de la ventana */
+    min-height: 100vh;
+    /* Flexbox para alinear y centrar el contenido */
+    display: flex;
+    /* Apila los elementos verticalmente (título arriba, juego abajo) */
+    flex-direction: column;
+    /* Centrado horizontal */
+    align-items: center;
+    /* Centrado vertical */
+    justify-content: center;
+    /* Fuente principal Bebas Neue, con sans-serif como respaldo */
+    font-family: 'Bebas Neue', sans-serif;
+    /* Espaciado entre letras */
+    letter-spacing: 1px;
+}
+
+/* TÍTULO DE LA PÁGINA */
+#titulo-juego {
+    /* Color naranja oscuro */
+    color: #D68936;
+    /* Tamaño de la fuente */
+    font-size: 55px;
+    /* Sin margen superior */
+    margin-top: 0;
+    /* Margen inferior para separarlo del juego */
+    margin-bottom: 20px;
+}
+
+/* 1. LA CAJA DEL JUEGO (#contenedor-juego) */
+
+   #contenedor-juego {
+       /* Ancho del contenedor */
+       width: 600px;
+       /* Alto del contenedor */
+       height: 200px;
+       /* Fondo blanco de seguridad con imagen superpuesta centrada abajo y cubriendo toda la caja */
+       background: #ffffff url('./images/fondo.jpg') no-repeat center bottom / cover;
+       /* Borde exterior del contenedor */
+       border: 2px solid #D68936;
+       /* Bordes redondeados */
+       border-radius: 10px;
+       /* Sombra inferior del contenedor para darle profundidad */
+       box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+
+       /* Convierte a esta caja en el punto de origen (0,0). Así, cuando le digamos al personaje o al obstáculo que se
+       coloquen abajo del todo, lo harán dentro de los límites de esta caja y no en toda la pantalla. */
+       position: relative;
+
+       /* Oculta todo lo que se salga de los bordes de la caja. De esta forma, el obstáculo no se verá flotando por el
+       resto de la página web cuando empiece a entrar o cuando salga. */
+       overflow: hidden;
+   }
+
+/* 2. EL PERSONAJE (#personaje) */
+
+#personaje {
+    /* Anchura del personaje */
+    width: 50px;
+    /* Altura del personaje */
+    height: 50px;
+    /* Tamaño de la fuente del emoji */
+    font-size: 40px;
+    /* Alineación vertical del texto/emoji */
+    line-height: 50px;
+
+    /* Nos deja colocar al personaje en coordenadas exactas dentro de la caja principal. Con 'bottom: 0' lo anclamos
+    al suelo de la caja, y con 'left: 50px' lo separamos de la pared izquierda para dar espacio visual de reacción. */
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+
+    /* Animación por defecto para que ruede continuamente */
+    animation: rodar 1.5s linear infinite;
+}
+
+/* 3. EL OBSTÁCULO (#obstaculo) */
+
+#obstaculo {
+    /* Anchura del obstáculo */
+    width: 100px;
+    /* Altura del obstáculo */
+    height: 100px;
+
+    /* Imagen de fondo del obstáculo */
+    background-image: url('images/trabajo-siniestro.png');
+    background-size: contain; /* Hace que la imagen encaje perfecta sin recortarse */
+    background-repeat: no-repeat; /* Evita que la imagen se repita como un mosaico */
+    background-position: center; /* Centra la imagen dentro de la caja de 100x100px */
+
+    /* Sirve ara pisar el suelo. Le ponemos 'right: -120px' para que inicie su posición totalmente
+    fuera de la caja por la derecha. Así entra a la pantalla de manera natural al moverse. */
+    position: absolute;
+    bottom: 0;
+    right: -120px;
+
+    /* Activa el movimiento. Usa las instrucciones de 'moverObstaculo', tarda 2 segundos en hacer el recorrido,
+    se repite de manera infinita y mantiene una velocidad constante ('linear'). */
+    animation: moverObstaculo 2s infinite linear;
+}
+
+/* 4. LAS INSTRUCCIONES DE MOVIMIENTO (@keyframes) */
+
+/* Dicta el viaje del obstáculo. Empieza en el 0% escondido a la derecha (-120px), y en el 100% termina habiendo cruzado
+toda la caja hasta salir por completo por la izquierda (720px). */
+@keyframes moverObstaculo {
+    0% { right: -120px; }
+    100% { right: 720px; }
+}
+
+/* Dicta el viaje del personaje. Sube hasta 120px de altura en el 40% del tiempo, se mantiene ahí hasta el 50% para que
+ el salto se vea natural, y cae de vuelta al suelo en el 100%. */
+@keyframes salto {
+    0% { bottom: 0; }
+    40% { bottom: 120px; }
+    50% { bottom: 120px; }
+    100% { bottom: 0; }
+}
+
+/* Dicta el movimiento de rotación para que el personaje ruede. */
+@keyframes rodar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Es el interruptor del movimiento. El personaje no la tiene por defecto. JavaScript se la añadirá cuando se pulse
+la tecla de salto, haciendo que salte durante 0.5 segundos. 
+Al usar #personaje.animar-salto aumentamos la especificidad de CSS para asegurarnos 
+de que esta regla sobrescriba a la animación por defecto del ID. */
+#personaje.animar-salto {
+    /* Combina el salto con el giro para mantener la rotación en el aire */
+    animation: salto 0.5s linear, rodar 1.5s linear infinite;
+}
+
+/* 5. TEXTOS Y PANTALLA DE PERDER */
+
+#marcador {
+    /* Texto en negrita */
+    font-weight: bold;
+    /* Color blanco para el texto */
+    color: #ffffff;
+    /* Tamaño del texto */
+    font-size: 22px;
+    /* Sombra del texto para mejorar la legibilidad sobre el fondo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    /* Posición absoluta respecto a la caja del juego */
+    position: absolute;
+    /* Separación desde arriba */
+    top: 10px;
+    /* Separación desde la izquierda */
+    left: 10px;
+
+    /* 'z-index: 5' asegura que el texto de los puntos siempre se dibuje en una capa superior. Si los personajes pasan por esa zona, pasarán por debajo del texto sin taparlo. */
+    z-index: 5;
+}
+
+#pantalla-fin {
+    /* Fondo negro translúcido */
+    background-color: rgba(0, 0, 0, 0.85);
+    /* Color del texto */
+    color: white;
+    /* Centrado del texto */
+    text-align: center;
+    /* Espaciado superior para centrar los textos verticalmente */
+    padding-top: 65px;
+    /* Evita que el padding aumente el tamaño total del contenedor */
+    box-sizing: border-box;
+    /* Posición absoluta para cubrir todo el contenedor del juego */
+    position: absolute;
+    /* Anclado arriba */
+    top: 0;
+    /* Anclado a la izquierda */
+    left: 0;
+    /* Ocupa todo el ancho disponible */
+    width: 100%;
+    /* Ocupa toda la altura disponible */
+    height: 100%;
+    /* Bordes redondeados para coincidir con el contenedor */
+    border-radius: 5px;
+
+    /* 'z-index: 10' lo pone por encima de todo lo demás, incluido el marcador. */
+    z-index: 10;
+
+    /* 'display: none' hace que esta pantalla negra sea invisible desde el inicio. JavaScript cambiará esta regla a 'display: block' para que aparezca al detectar una colisión. */
+    display: none;
+}
+
+#pantalla-fin h1 {
+    /* Margen del título principal */
+    margin: 0 0 2px 0;
+    /* Tamaño del texto del título */
+    font-size: 26px;
+    /* Color rojo salmón */
+    color: #FF6B6B;
+    /* Sombra del título */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+#pantalla-fin p {
+    /* Elimina márgenes por defecto */
+    margin: 0;
+    /* Tamaño de texto secundario */
+    font-size: 16px;
+    /* Color salmón para el texto */
+    color: #FCCC84;
+}
