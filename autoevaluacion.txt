@@ -1,0 +1,17 @@
+AUTOEVALUACIÓN:
+
+1. ¿Qué parte te ha resultado más difícil de implementar?
+
+La parte que más me ha costado implementar ha sido el proyecto dos del minijuego. No entendia muy bien la parte de las coordenadas para las colisiones del personaje. Además cuando ya pensé que había completado la actividad me di cuenta que añadí una función incorrecta que hacía que los puntos se sumaran en vez de cuando saltas un obstáculo, cuando pasaba X cantidad de tiempo, y tuve que comerme la cabeza bastante con eso. Ya que se sumaban los puntos incorrectamente
+
+
+2. ¿Has añadido alguna funcionalidad extra (Bonus)?
+
+He añadido las dos funcionalidades extra que se piden en la actividad. Además quería probar a añadir una funcionalidad extra en el ajedrez, para que pudieras mover las piezas según el turno del jugador que fuera. Pero era bastante complejo, realmente no lo entendía y prácticamente me lo iba a hacer entero la inteligencia artificial, así que no tenía mucho sentido si realmente no iba a conseguir aprender mucho
+
+Además para el proyecto del mini-juego si que he añadido un par de cosas extras que son tonterías realmente, como un fondo, que en vez de un emoji sea una imagen, un título y realmente poco más. Ya que la parte del mini-juego me costó aprenderlo bastante, y tampoco quería ir más allá sin haber asimilado primero eso
+
+
+3. ¿Funciona correctamente en todos los navegadores?
+
+Lo he probado en Firefox, Edge, Chrome y la propia previsualización que te da IntelliJ. En todos esos navegadores funciona correctamente, así que supongo que en los demás navegadores tampoco dará problema
